@@ -1,0 +1,1 @@
+console.log("this code is executed from the external file");
