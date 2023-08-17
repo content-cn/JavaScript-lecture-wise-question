@@ -1,0 +1,37 @@
+<script>
+function main() {
+  class Account {
+    #accountNumber;
+    #balance;
+    constructor(accountNumber) {
+      this.#accountNumber = accountNumber;
+      this.#balance = 0;
+    }
+
+    get getbalance() {
+      return this.#balance;
+    }
+
+    set setbalance(value) {
+      if (value < 0) {
+        return "Please enter a positive value for the balance";
+      }
+      this.#balance = value;
+    }
+
+    deposit(amount) {
+      this.#balance += amount;
+    }
+
+    withdraw(amount) {
+      if (amount > this.#balance) {
+        return "Insufficient balance";
+      }
+      this.#balance -= amount;
+    }
+  }
+
+  return Account;
+}
+
+</script>
