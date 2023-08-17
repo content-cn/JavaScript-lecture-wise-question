@@ -1,0 +1,10 @@
+<script>
+  function repeatAfterDelay(callback, delay) {
+  return function(...args) {
+    setTimeout(() => {
+      callback.apply(null, args);
+    }, delay);
+  };
+}
+
+</script>
