@@ -1,0 +1,179 @@
+<html>
+        <head>
+                <style>
+.container {
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  color: white;
+  
+  background-color: #272727;
+}
+body{
+  
+  background-color: #121212;
+}
+.posts-container {
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar{
+  background-color: #fef8f8;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f8f1f1;
+  font-style: oblique;
+}
+
+#posts {
+  margin-top: 20px;
+}
+
+.post {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #121212;
+  color: white;
+}
+
+.post h3 {
+  font-size: 18px;
+   color: white;
+   text-align: center;
+}
+
+.post p {
+  margin-left: 20px;
+  font-size: 20px;
+  color: white;
+}
+
+.post img {
+  margin-left: 20px;
+  margin-right: 20px;
+  height: auto;
+  margin-bottom: 10px;
+  width: 500px;
+}
+.post button{
+  margin-left: 20px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 15px;
+}
+.post button:hover{
+  background-color:#a7a7a7;
+  
+}
+
+
+.post-footer {
+  margin-left: 20px;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #888;
+}
+
+.comments-container {
+  margin-top: 10px;
+  color: #666;
+}
+
+.comments-container p {
+  margin-left: 20px;
+}
+
+
+                </style>
+        </head>
+        <body>
+                <div class="container">
+                        <div class="posts-container">
+                          <h1>Photogram</h1>
+                          <div id="posts"></div>
+                        </div>
+                      </div>   
+                      <script>
+    let post1 ={ id: 1, 
+      author: 'John',
+      content: 'My first Post!', 
+      likes: 10, 
+      comments: ['Great post!', 'Nice photo!'], 
+      image: 'https://files.codingninjas.in/image2-28694.jpg' };
+
+function renderPosts() {
+    const postsContainer = document.getElementById('posts');
+    postsContainer.innerHTML = '';
+  
+
+      const postElement = document.createElement('div');
+      postElement.classList.add('post');
+  
+      const authorElement = document.createElement('h3');
+      authorElement.textContent = post1.author;
+  
+      const contentElement = document.createElement('p');
+      contentElement.textContent = post1.content;
+  
+      const imageElement = document.createElement('img');
+      imageElement.src = post1.image;
+      imageElement.alt = 'Post Image';
+  
+      const likeButton = document.createElement('button');
+      likeButton.textContent = `Like`;
+
+  
+      const commentInput = document.createElement('input');
+      commentInput.type = 'text';
+      commentInput.placeholder = 'Write a comment...';
+  
+      const commentButton = document.createElement('button');
+      commentButton.textContent = 'Comment';
+
+      const postFooter = document.createElement('div');
+      postFooter.classList.add('post-footer');
+      postFooter.textContent = `Likes: ${post1.likes}   Comments: ${post1.comments.length}`;
+  
+      const commentsContainer = document.createElement('div');
+      commentsContainer.classList.add('comments-container');
+      commentsContainer.style.display = 'none';
+  
+      post1.comments.forEach((comment) => {
+        const commentElement = document.createElement('p');
+        commentElement.textContent = comment;
+        commentsContainer.appendChild(commentElement);
+      });
+  
+      postElement.appendChild(authorElement);
+
+      postElement.appendChild(imageElement);
+      postElement.appendChild(contentElement);
+      postElement.appendChild(likeButton);
+      postElement.appendChild(commentInput);
+      postElement.appendChild(commentButton);
+      postElement.appendChild(postFooter);
+      postElement.appendChild(commentsContainer);
+  
+      postFooter.addEventListener('click', () => {
+        if (commentsContainer.style.display === 'none') {
+          commentsContainer.style.display = 'block';
+        } else {
+          commentsContainer.style.display = 'none';
+        }
+      });
+  
+      postsContainer.appendChild(postElement);
+    }
+
+ renderPosts();
+                      </script>      
+        </body>
+</html>
